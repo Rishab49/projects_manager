@@ -55,7 +55,7 @@ window.onload = function () {
     G = new Global(
       [
         new Project(
-          "Google",
+          "Dummy Project",
           "assets/images/IBM-Logo-Tagline.jpg",
           [
             { id: 5, value: "this is the first objective" },
@@ -80,59 +80,7 @@ window.onload = function () {
             { id: 3, value: "this is the third task" },
             { id: 4, value: "this is the fourth task" },
           ]
-        ),
-        new Project(
-          "Finished",
-          "assets/images/IBM-Logo-Tagline.jpg",
-          [
-            { id: 5, value: "this is the first objective" },
-            {
-              id: 4,
-              value:
-                "this is the second objective , but this one is larger than others",
-            },
-            { id: 3, value: "this is the third objective" },
-            { id: 2, value: "this is the fourth objective" },
-            { id: 1, value: "this is the fifth objective" },
-          ],
-          3,
-          0,
-          [
-            { id: 1, value: "this is the first task" },
-            {
-              id: 2,
-              value:
-                "this is the second task and it has a very long description. this is the end of very long description",
-            },
-          ]
-        ),
-        new Project(
-          "onHold",
-          "assets/images/IBM-Logo-Tagline.jpg",
-          [
-            { id: 5, value: "this is the first objective" },
-            {
-              id: 4,
-              value:
-                "this is the second objective , but this one is larger than others",
-            },
-            { id: 3, value: "this is the third objective" },
-            { id: 2, value: "this is the fourth objective" },
-            { id: 1, value: "this is the fifth objective" },
-          ],
-          3,
-          0,
-          [
-            { id: 1, value: "this is the first task" },
-            {
-              id: 2,
-              value:
-                "this is the second task and it has a very long description. this is the end of very long description",
-            },
-            { id: 3, value: "this is the third task" },
-            { id: 4, value: "this is the fourth task" },
-          ]
-        ),
+        )
       ],
       [],
       []
