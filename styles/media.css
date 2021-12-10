@@ -1,0 +1,104 @@
+@media (max-width:768px) {
+    .overlay-container .view_component{
+        width:100%;
+    }
+    .view_component .img-container{
+        flex:2;
+    }
+}
+
+
+@media (max-width:700px) {
+
+    .main-content-area .search-n-sort-section{
+        grid-gap:var(--secondary-gap);
+    }
+
+    .main-content-area{
+        grid-gap:var(--primary-gap);
+    }
+    .main-content-area .navigation-section{
+        padding:var(--primary-gap) 0 0 0;
+    }
+    .main-content-area .navigation-section ul{
+        display:none;
+    }
+
+    .main-content-area .navigation-section .profile-container p{
+        display:none;
+    }
+
+    .main-content-area .navigation-section .menu-icon-container{
+        display: flex;
+    }
+    .menu-area{
+        flex:2;
+    }
+   
+}
+
+@media (max-width:425px) {
+    .main-content-area .navigation-section .profile-icon-container{
+        display:none;
+    }
+
+    .main-content-area .search-n-sort-section .list-view-container,
+    .main-content-area .search-n-sort-section .grid-view-container{
+        display:none;
+    }
+
+    .create-button{
+        height:35px;
+        width:35px;
+    }
+
+    .view_component .content-container .flex-container{
+        flex-direction: column;
+        overflow-y: scroll;
+        grid-gap:var(--secondary-gap);
+    }
+
+    .view_component .basic-info-container{
+        grid-gap:var(--micro-gap);
+    }
+    .view_component .flex-container .left-part,
+    .view_component .flex-container .right-part{
+        min-height: 490px;
+    }
+   
+
+    ::-webkit-scrollbar{
+        width: 0.5rem;
+        background-color:transparent;
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background-color:var(--tertiary-color);
+        border-radius: var(--border-radius);
+    }
+   
+}
+
+
+
+@media (max-width:375px) {
+   .main-content-area .search-n-sort-section{
+       grid-gap:0;
+   }
+
+   .search-n-sort-section .left-part{
+       flex:1;
+   }
+
+   .search-n-sort-section .left-part .search-container{
+       width:100%;
+   }
+}
+
+
+
+@media (max-width:320px) {
+    .menu-area{
+        flex:3;
+    }
+}

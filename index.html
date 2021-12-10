@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/utility.css">
+    <link rel="stylesheet" href="styles/media.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,400&display=swap" rel="stylesheet">  
+  <title>Project Manager</title>
+</head>
+<body class="flex">
+    <div class="menu-area flex column ai-center jc-space-between">
+        <div class="menu-container flex column ai-center jc-center">
+            <ul class="flex ai-center jc-center column ">
+                <li class="flex ai-center jc-flex-start menu-item-active"><img src="/assets/icons/grid.png"></li>
+                <li class="flex ai-center jc-flex-start"><img src="/assets/icons/column.png"></li>
+                <li class="flex ai-center jc-flex-start"><img src="/assets/icons/circle.png"></li>
+                <li class="flex ai-center jc-flex-start"><img src="/assets/icons/pie-chart.png"></li>
+            </ul>
+        </div>
+        <div class="options-container flex ai-center jc-center column">
+            <ul class="flex ai-center jc-flex-end column ">
+                <li class="flex ai-center jc-flex-start"><img src="/assets/icons/settings.png"></li>
+                <li class="flex ai-center jc-flex-start"><img src="/assets/icons/magnifying-glass.png"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-content-area flex column">
+        <div class="navigation-section flex jc-space-between">
+            <div class="site-icon-container flex ai-center jc-flex-start">
+                    <h2>Projects</h2>
+            </div>
+            <ul class="flex jc-space-between">
+                <li class="flex ai-center jc-center menu-active"><p>Home</p></li>
+                <li class="flex ai-center jc-center"><p>About</p></li>
+                <li class="flex ai-center jc-center"><p>Pricing</p></li>
+            </ul>
+
+            <div class="profile-section flex ai-center jc-flex-end">
+                
+                <div class="profile-container flex ai-center jc-space-between">
+                    <p>Rishab</p>
+                    <div class="profile-icon-container  img-container flex ai-center jc-center">
+                        <img src="assets/images/portrait.jpg">
+                    </div>
+                    <div class="menu-icon-container  icon-container flex ai-center jc-center">
+                        <img src="assets/icons/side-menu.png">
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+        <div class="search-n-sort-section flex ai-center jc-space-between">
+
+            <div class="left-part flex ai-center jc-flex-start">
+                <div class="search-container flex ai-center jc-space-between">
+                    <div class="icon-container flex ai-center jc-center">
+                        <img src="assets/icons/magnifying-glass.png">
+                    </div>
+                    <input type="text" placeholder="Search by project name">
+                </div>
+            </div>
+          <div class="right-part flex ai-center jc-flex-end">
+            <div class="list-view-container icon-container flex ai-center jc-center">
+                <img src="assets/icons/list.png">
+            </div>
+            <div class="grid-view-container icon-container flex ai-center jc-center">
+                <img src="assets/icons/menu.png">
+            </div>
+          </div>
+         
+        </div>
+        <div class="projects-container flex">
+         
+        </div>
+        <template id="project-template">
+            <!-- <div class="project flex column ai-flex-start jc-center"> -->
+                <div class="header-container flex ai-center jc-space-between">
+                    <div class="img-container flex ai-center jc-center">
+                        <img src="assets/images/IBM-Logo-Tagline.jpg">
+                    </div>
+                    <div class="icon-container option-icon-container flex ai-center jc-flex-end">
+                        <img src="assets/icons/dots.png">
+                        <div class="project-menu">
+                            <ul>
+                                <li>Delete</li>
+                                <li>on Hold</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="project-name">IBM</h3>
+                <div class="objectives-container">
+                    <ul class="flex column">
+                       
+                    </ul>
+                </div>
+                <div class="progress-bar-container  flex ai-center jc-space-between">
+
+                </div>
+                <div class="footer flex ai-center jc-space-between">
+                    <div class="project-button flex ai-center jc-center">3 Days left</div>
+                    <div class="peoples-involved"></div>
+                </div>
+            <!-- </div> -->
+        </template>
+        <template id="progress-bar">
+            
+                <div class="bar-container">
+                    <div class="bar"></div>
+                </div>
+                <div class="percentage-indicator flex ai-center jc-center">
+                   <p>0%</p>
+                </div>
+        </template>
+    </div>
+
+    <div class="side-menu">
+        <ul class="flex jc-space-between">
+            <li class="flex ai-center jc-center menu-active"><p>On Going</p></li>
+            <li class="flex ai-center jc-center"><p>Finished</p></li>
+            <li class="flex ai-center jc-center"><p>On Hold</p></li>
+        </ul>
+    </div>
+<button type="button" class="create-button round-button flex ai-center jc-center">
+    <img src="assets/icons/plus.png">
+</button>
+
+
+<div class="overlay-container flex ai-center jc-center">
+    <template id="project-create-form">
+        <div class="create-form flex ai-center jc-center">
+            <div class="left-part flex column ai-center jc-flex-start">
+                <input type="image">
+                <input type="text">
+
+            </div>
+            <div class="right-part"></div>
+        </div>
+    </template>
+    <template id="project-view-form">
+        <div class="view_component flex column ai-center jc-center">
+            <div class="content-container flex ai-center jc-center column">
+                <div class="flex-container flex ">
+                <div class="left-part flex column ai-center jc-flex-start">
+                   <div class="basic-info-container flex">
+                       <div class="img-container flex ai-center jc-center"></div>
+                       <div class="info-container flex column">
+                        <input type="text" class="image-field">
+                        <input type="text" class="text-field">
+                       </div>
+                   </div>
+                  
+                    <div class="objectives-container">
+                        <div class="container-heading flex ai-center jc-center">
+                            <hr><p>Objectives</p><hr>
+                        </div>
+                        <div class="container-body  flex ai-flex-start jc-center">
+                            
+                            <div class="container flex ai-center jc-center">
+                                
+                            </div>
+                        
+                        </div>
+                        <button type="button" class="add-button ai-center jc-center">
+                            <img src="/assets/icons/plus.png">
+                        </button>
+                    </div>
+                    <div class="peoples-working">
+                        <div class="container-heading flex ai-center jc-center">
+                            <hr><p>peoples </p><hr>
+                        </div>
+                        <div class="container-body  flex ai-flex-start jc-center">
+                            <div class="container flex ai-flex-start jc-center"></div>
+                           
+                        </div>
+                        <button type="button" class="add-button ai-center jc-center">
+                            <img src="/assets/icons/plus.png">
+                        </button>
+                    </div>
+                </div>
+                <div class="right-part">
+                    <div class="tasks-container flex column ai-center jc-center">
+                        <div class="undone-section">
+                            <div class="container-heading flex ai-center jc-center">
+                                <hr><p>Incomplete</p><hr>
+                            </div>
+                            <div class="container-body  flex ai-flex-start jc-center">
+                                <div class="container flex ai-flex-start jc-flex-start column"></div>
+                               
+                            </div>
+                            <button type="button" class="add-button ai-center jc-center">
+                                <img src="/assets/icons/plus.png">
+                            </button>
+                        </div>
+                        <div class="done-section">
+                            <div class="container-heading flex ai-center jc-center">
+                                <hr><p>Completed</p><hr>
+                            </div>
+                            <div class="container-body  flex ai-flex-start jc-center">
+                                <div class="container flex ai-flex-start jc-center column"></div>
+                            
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="button-container flex ai-center jc-flex-end">
+                <button type="button" class="project-button">Close</button>
+            </div>
+        </div>
+        </div>
+    </template>
+    
+</div>
+
+<div class="popup flex ai-center jc-center">
+    <p>Project Finished!</p>
+        </div>
+
+    <script src="/scripts/utility.js"></script>
+    <script src="/scripts/project-component.js"></script>
+    <script src="/scripts/global.js"></script>
+    <script src="/scripts/main.js"></script>
+
+</body>
+</html>
