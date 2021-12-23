@@ -84,6 +84,14 @@ class Global {
   }
 
   // methods
+
+
+  cancelButtonListener = ()=>{
+    console.log("shifting");
+    this.running.shift();
+    this.render(false);
+    console.log(this.projects);
+  }
   render = (firstTime, secondaryArray = []) => {
 
     if (secondaryArray.length == 0) {
@@ -112,11 +120,13 @@ class Global {
               .appendChild(emptyElement);
             return 0;
           } else {
+            
             this.running.forEach((project) => {
               this._uiElement
                 .querySelector(".projects-container")
                 .appendChild(project.uiElement);
             });
+         
           }
         }
 
@@ -163,11 +173,18 @@ class Global {
       );
       this.uiElement.appendChild(container);
       console.log(secondaryArray);
+      // sel.removeAllRanges();
       secondaryArray.forEach((e) => {
         this._uiElement
           .querySelector(".projects-container")
           .appendChild(e);
+
+          console.log('this is the range',this.sel);
+
+      // range.selectNodeContents(this.uiElement.querySelector(".project-name"));
+      // sel.addRange(range);
       });
+    
     }
   };
 
@@ -180,7 +197,10 @@ class Global {
       0,
       []
     );
+
     this.running[this.running.length - 1].uiElement.click();
+    this.running[this.running.length - 1].viewComponent.querySelector(".button-container").querySelector(".cancel").style.display="block";
+    this.running[this.running.length - 1].viewComponent.querySelector(".button-container").children[0].textContent="Save";
     this.render(false);
   };
 }

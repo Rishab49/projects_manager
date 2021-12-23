@@ -111,6 +111,21 @@ class Project {
         localStorageSetter();
       });
 
+
+      clone
+      .querySelector(".project-menu")
+      .children[0].children[2].addEventListener("click", (e) => {
+        G.onHold.forEach((oh,index)=>{
+          if(oh === this){
+            G.running = G.onHold.splice(index,1)[0];
+          }
+        });
+
+        G.render(false);
+        // console.log(this);
+        localStorageSetter();
+      });
+
     wrapper.appendChild(clone);
     return wrapper;
   }
@@ -130,7 +145,6 @@ class Project {
     let listContainer = elementFactory("ul", "flex column", [], "");
     for (let i = 0; i < this.objectives.length; i++) {
       let objective = elementFactory("li", "", [], this.objectives[i].value);
-
       listContainer.appendChild(objective);
     }
 
@@ -305,13 +319,16 @@ class Project {
           .children[1].children[0].appendChild(objective);
       }
 
+     if(this.objectives[0].value == ""){
       this.viewComponent
-        .querySelector(".objectives-container")
-        .children[1].children[0].children[0].click();
-      this.viewComponent
-        .querySelector(".objectives-container")
-        .children[1].children[0].children[0].querySelector("input")
-        .focus();
+      .querySelector(".objectives-container")
+      .children[1].children[0].children[0].click();
+    this.viewComponent
+      .querySelector(".objectives-container")
+      .children[1].children[0].children[0].querySelector("input")
+      .focus();
+     }
+   
     }
   }
 
@@ -665,10 +682,17 @@ class Project {
 
   // this is the click handler of the project card
   projectClickHandler = (e) => {
+
+
+    if(e.name == ""){
+      this.viewComponent.querySelector("button-container").querySelector(".cancel").style.display="block";
+    }
     document.querySelector(".overlay-container").style.height = "100%";
     document.querySelector(".overlay-container").style.padding =
       "var(--secondary-gap)";
 
+      
+      console.log("this isthe wanted element", this.viewComponent);
     view_component.querySelector(".image-field").value = this.img;
     view_component.querySelector(".image-field").oninput = (e) => {
       this.updateImage(e.srcElement.value);
@@ -691,15 +715,52 @@ class Project {
       .children[0].addEventListener("click", () => {
         document.querySelector(".overlay-container").style.height = "0%";
         document.querySelector(".overlay-container").style.padding = "0";
+        
+        if(this.name == "" || (this.undone.length == 0 && this.done.length == 0) ){
+          popUpHandler("empty project discarded");
+          document
+          .querySelector(".overlay-container")
+          .removeChild(document.querySelector(".view_component"));
+        view_component = document
+          .querySelector("#project-view-form")
+          .content.cloneNode(true);
+
+          G.cancelButtonListener();
+        }
+        else{
         document
           .querySelector(".overlay-container")
           .removeChild(document.querySelector(".view_component"));
         view_component = document
           .querySelector("#project-view-form")
           .content.cloneNode(true);
+
+        
         this.re_render();
         localStorageSetter();
+        }
       });
+
+
+
+      view_component
+      .querySelector(".button-container")
+      .children[1].addEventListener("click", () => {
+        document.querySelector(".overlay-container").style.height = "0%";
+        document.querySelector(".overlay-container").style.padding = "0";
+
+        document
+        .querySelector(".overlay-container")
+        .removeChild(document.querySelector(".view_component"));
+      view_component = document
+        .querySelector("#project-view-form")
+        .content.cloneNode(true);
+
+
+       G.cancelButtonListener();
+      });
+
+
 
     view_component
       .querySelector(".objectives-container")
@@ -776,16 +837,45 @@ class Project {
     document.querySelector(".overlay-container").appendChild(view_component);
 
     this.viewComponent = document.querySelector(".view_component");
+
+    this.viewComponent.querySelector(".button-container").children[0].textContent="save & close";
+    this.viewComponent.querySelector(".button-container").children[1].style.display="none";
   };
 
   // this is the click handler for the card menu
   projectMenuClickHandler = (e) => {
-    window
-      .getComputedStyle(this.uiElement.querySelector(".project-menu"))
-      .getPropertyValue("display") == "none"
-      ? (this.uiElement.querySelector(".project-menu").style.display = "block")
-      : (this.uiElement.querySelector(".project-menu").style.display = "none");
     e.stopPropagation();
+    // e.preventDefault();
+    if(G.state == RUNNING){
+      window
+      .getComputedStyle(this.uiElement.querySelector(".project-menu").children[0].children[0])
+      .getPropertyValue("display") == "none"
+      ? (this.uiElement.querySelector(".project-menu").children[0].children[0].style.display = "block",
+         this.uiElement.querySelector(".project-menu").children[0].children[1].style.display = "block")
+      : (this.uiElement.querySelector(".project-menu").children[0].children[0].style.display = "none",
+      this.uiElement.querySelector(".project-menu").children[0].children[1].style.display = "none",
+      this.uiElement.querySelector(".project-menu").children[0].children[2].style.display = "none")
+    }
+
+    if(G.state == FINISHED){
+      window
+      .getComputedStyle(this.uiElement.querySelector(".project-menu").children[0].children[0])
+      .getPropertyValue("display") == "none"
+      ? (this.uiElement.querySelector(".project-menu").children[0].children[0].style.display = "block")
+      : (this.uiElement.querySelector(".project-menu").children[0].children[0].style.display = "none",
+      this.uiElement.querySelector(".project-menu").children[0].children[1].style.display = "none")
+    }
+
+    if(G.state == ONHOLD){
+      window
+      .getComputedStyle(this.uiElement.querySelector(".project-menu").children[0].children[0])
+      .getPropertyValue("display") == "none"
+      ? (this.uiElement.querySelector(".project-menu").children[0].children[0].style.display = "block",
+      this.uiElement.querySelector(".project-menu").children[0].children[2].style.display = "block")
+      : (this.uiElement.querySelector(".project-menu").children[0].children[0].style.display = "none",
+      this.uiElement.querySelector(".project-menu").children[0].children[2].style.display = "none")
+    }
+   
   };
 
   // getters

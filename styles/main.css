@@ -176,7 +176,6 @@ overflow-y:scroll;
     .project .project-menu{
         position:absolute;
         height:fit-content;
-        display: none;
         width:75px;
         top:var(--large-gap);
         right:0;
@@ -190,6 +189,7 @@ overflow-y:scroll;
     }
 
     .project .project-menu li{
+        display: none;
         padding:var(--primary-gap);
     }
     .project .project-menu li:hover{
@@ -198,9 +198,13 @@ overflow-y:scroll;
     }
     /*create button*/
 
-    
+    /* .create-button-container{
+        height:100vh;
+        width:100vw;
+        position:absolute;
+    } */
 .create-button{
-    position: absolute;
+    position: fixed;
     bottom:var(--secondary-gap);
     right:var(--secondary-gap);
     cursor: pointer;
@@ -242,8 +246,28 @@ overflow-y:scroll;
     font-size: var(--primary-font-size);
 }
 
+/*location container*/
 
 
+
+.location-container{
+    padding: 0 var(--secondary-gap) 0 var(--secondary-gap);
+    flex:1;
+    width:100%;
+    grid-gap:var(--primary-gap);
+}
+
+.location-container hr:nth-of-type(1){
+    flex:1;
+    border:1px solid black;
+    height: 1px;
+}
+
+.location-container hr:nth-of-type(2){
+    flex:15;
+    border:1px solid black;
+    height: 1px;
+}
 /*overlay component*/
 
 
@@ -322,6 +346,11 @@ grid-gap:var(--secondary-gap);
     flex:1;
     width: 100%;
     min-height: 35px;
+    grid-gap:var(--secondary-gap);
+}
+
+.view_component .button-container .cancel{
+    display: none;
 }
 
 .view_component .left-part{
@@ -617,13 +646,48 @@ outline :0;
 
 /*side-menu*/
 
+
+.side-menu-active.side-menu{
+    transform: translateX(0px);
+}
+
 .side-menu{
     position:absolute;
     z-index: 10;
     height: 100%;
-    width: 150px;
+    width: 250px;
     background-color: var(--tertiary-color-light-shade);
     right: 0;
     top:0;
-    transform: translateX(150px);
+    box-shadow: -2px -2px 10px  black;
+    will-change: transform;
+    transition:transform 0.5s;
+    transform: translateX(250px);
+}
+
+
+.side-menu .location-container hr{
+    border: 1px solid white;
+}
+.side-menu ul{
+    margin: 0;
+    padding: var(--extra-large-gap);
+    flex: 6;
+    width: 100%;
+}
+
+
+.side-menu .close-button-container{
+    flex:1;
+    width:100%;
+    padding:var(--extra-large-gap) var(--large-gap) 0 0;
+    filter:invert(1);
+}
+
+.side-menu .social-container{
+    flex:3;
+    width:100%;
+    padding: var(--extra-large-gap);
+    filter: invert(1);
+    grid-gap:var(--extra-large-gap);
 }

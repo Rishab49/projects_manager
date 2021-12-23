@@ -80,7 +80,7 @@ window.onload = function () {
             { id: 3, value: "this is the third task" },
             { id: 4, value: "this is the fourth task" },
           ]
-        )
+        ),
       ],
       [],
       []
@@ -88,7 +88,9 @@ window.onload = function () {
   }
   G.render(true);
 
-  document.querySelector(".create-button").addEventListener("click", G.addForm);
+  document.querySelector(".create-button").addEventListener("click", () => {
+    G.addForm();
+  });
 
   document
     .querySelector(".menu-area")
@@ -127,12 +129,40 @@ window.onload = function () {
     .querySelector(".search-container")
     .addEventListener("keyup", searchProject);
 
+  // TODO elements
 
-
-    // TODO elements 
-
-
-    document.querySelector(".menu-area").querySelector(".menu-container").children[0].children[3].addEventListener("click",function(){
+  document
+    .querySelector(".menu-area")
+    .querySelector(".menu-container")
+    .children[0].children[3].addEventListener("click", function () {
       popUpHandler("Coming Soon");
-    })
+    });
 };
+
+window.addEventListener("click", function (e) {
+  if (!e.target.matches(".project-menu")) {
+    document.querySelectorAll(".project-menu").forEach((e) => {
+      [...e.children[0].children].forEach((li) => {
+        if (
+          window.getComputedStyle(li).getPropertyValue("display") == "block"
+        ) {
+          li.style.display = "none";
+        }
+      });
+    });
+  }
+});
+
+document
+  .querySelector(".side-menu")
+  .querySelector(".close-button-container")
+  .querySelector("img")
+  .addEventListener("click", () => {
+    document.querySelector(".side-menu").classList.toggle("side-menu-active");
+  });
+
+document
+  .querySelector(".menu-icon-container")
+  .addEventListener("click", function () {
+    document.querySelector(".side-menu").classList.toggle("side-menu-active");
+  });

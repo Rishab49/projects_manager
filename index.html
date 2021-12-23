@@ -17,10 +17,10 @@
     <div class="menu-area flex column ai-center jc-space-between">
         <div class="menu-container flex column ai-center jc-center">
             <ul class="flex ai-center jc-center column ">
-                <li class="flex ai-center jc-flex-start menu-item-active"><img src="/assets/icons/grid.png"></li>
-                <li class="flex ai-center jc-flex-start"><img src="/assets/icons/column.png"></li>
-                <li class="flex ai-center jc-flex-start"><img src="/assets/icons/circle.png"></li>
-                <li class="flex ai-center jc-flex-start"><img src="/assets/icons/pie-chart.png"></li>
+                <li class="flex ai-center jc-flex-start menu-item-active" data-name="On Going"><img src="/assets/icons/grid.png"></li>
+                <li class="flex ai-center jc-flex-start" data-name="Finished"><img src="/assets/icons/column.png"></li>
+                <li class="flex ai-center jc-flex-start" data-name="On Hold"><img src="/assets/icons/circle.png"></li>
+                <li class="flex ai-center jc-flex-start" data-name="Stats"><img src="/assets/icons/pie-chart.png"></li>
             </ul>
         </div>
         <div class="options-container flex ai-center jc-center column">
@@ -55,6 +55,7 @@
               
             </div>
         </div>
+       
         <div class="search-n-sort-section flex ai-center jc-space-between">
 
             <div class="left-part flex ai-center jc-flex-start">
@@ -75,6 +76,9 @@
           </div>
          
         </div>
+        <div class="location-container flex ai-center jc-flex-start">
+           <hr> <p>On Going</p><hr>
+        </div>
         <div class="projects-container flex">
          
         </div>
@@ -90,6 +94,7 @@
                             <ul>
                                 <li>Delete</li>
                                 <li>on Hold</li>
+                                <li>unhold</li>
                             </ul>
                         </div>
                     </div>
@@ -121,16 +126,35 @@
         </template>
     </div>
 
-    <div class="side-menu">
-        <ul class="flex jc-space-between">
-            <li class="flex ai-center jc-center menu-active"><p>On Going</p></li>
-            <li class="flex ai-center jc-center"><p>Finished</p></li>
-            <li class="flex ai-center jc-center"><p>On Hold</p></li>
+    <div class="side-menu  flex ai-center jc-flex-start column">
+        <div class="close-button-container flex ai-center jc-flex-end">
+            <img src="/assets/icons/close.png">
+        </div>
+        <div class="location-container flex ai-center jc-center">
+            <hr>
+            <p>Menu</p>
+            <hr>
+        </div>
+        <ul class="flex jc-space-between column">
+            <li class="flex ai-center jc-center menu-active"><p>Home</p></li>
+            <li class="flex ai-center jc-center"><p>About</p></li>
+            <li class="flex ai-center jc-center"><p>Pricing</p></li>
         </ul>
+        <div class="social-container flex ai-center jc-center">
+            <a href="https://www.linkedin.com/in/rishab-raj-7a720520a/">
+                <img src="assets/icons/linkedin-logo.png">
+            </a>
+           <a href="mailto:rishab.rishu49@gmail.com">
+            <img src="assets/icons/email.png">
+           </a>
+        </div>
     </div>
-<button type="button" class="create-button round-button flex ai-center jc-center">
-    <img src="assets/icons/plus.png">
-</button>
+    <!-- <div class="create-button-container flex ai-flex-end jc-flex-end"> -->
+        <button type="button" class="create-button round-button flex ai-center jc-center">
+            <img src="assets/icons/plus.png">
+        </button>
+    <!-- </div> -->
+
 
 
 <div class="overlay-container flex ai-center jc-center">
@@ -214,6 +238,7 @@
             </div>
             <div class="button-container flex ai-center jc-flex-end">
                 <button type="button" class="project-button">Close</button>
+                <button type="button" class="project-button cancel">Cancel</button>
             </div>
         </div>
         </div>

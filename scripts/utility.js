@@ -10,6 +10,9 @@ const emptyElement = elementFactory(
 <p> No Projects Found</p>
 `
 );
+// let range = document.createRange();
+// let sel = window.getSelection();
+
 
 let peoples = [
   { id: 5, img: "assets/images/portrait-1.jpg", name: "Jim Gordan" },
@@ -55,6 +58,14 @@ let listItemStyleChanger = (e) => {
       ? listItem.setAttribute("class", "flex ai-center jc-flex-start menu-item-active")
       : listItem.setAttribute("class", "flex ai-center jc-flex-start");
   });
+
+
+  e.path[0].getAttribute("data-name") 
+  ? document.getElementsByClassName("location-container")[0].children[1].textContent = e.path[0].getAttribute("data-name")
+  : document.getElementsByClassName("location-container")[0].children[1].textContent = e.path[1].getAttribute("data-name")
+
+
+
 };
 
 function localStorageSetter() {
@@ -73,7 +84,7 @@ function searchProject(e){
   
 let tempArray = [];
 let tempArray2 = [emptyElement];
-let regex = new RegExp(e.srcElement.value,'gi');
+let regex = new RegExp(e.srcElement.value,'i');
 console.log("running",regex);
 if(G.state == RUNNING){
   console.log("first");
@@ -83,9 +94,16 @@ if(G.state == RUNNING){
     :"";
   });
 
-  tempArray.length == 0
-  ? G.render(false,tempArray2)
-  : G.render(false,tempArray)
+
+  if(tempArray.length == 0){
+    
+    G.render(false,tempArray2);
+    sel.removeAllRanges();
+  }
+  else{
+  G.render(false,tempArray);
+
+  }
 
   console.log(tempArray);
   console.log(tempArray2);
@@ -93,13 +111,13 @@ if(G.state == RUNNING){
 } 
 
 if(G.state == FINISHED){
-  console.log("second");
   G.finished.forEach((finish)=>{
-    regex.test(finish.name)
-    ? tempArray.push(finish.uiElement)
-    :"";
+    var result = regex.test(finish.name)
+    if(result)
+    {
+      tempArray.push(finish.uiElement)
+    }
   });
-
   tempArray.length == 0
   ? G.render(false,tempArray2)
   : G.render(false,tempArray)
